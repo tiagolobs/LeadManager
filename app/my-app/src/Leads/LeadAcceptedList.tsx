@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import leadService from "../Services/LeadService";
 import CardAccepted from "./Card/CardAccepted";
+import { LeadStatus } from "./Enums";
 import { Lead } from "./Types";
 
 const LeadAcceptedList: React.FC = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
 
   const fetchLeads = async () => {
-    const leads = await leadService.getLeads(1);
+    const leads = await leadService.getLeads(LeadStatus.Accepted);
     setLeads(leads);
   };
   useEffect(() => {
