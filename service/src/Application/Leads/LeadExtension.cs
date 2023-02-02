@@ -10,7 +10,7 @@ namespace Application.Leads.GetLeads
             {
                 Id = lead.Id,
                 LeadStatus = lead.LeadStatus,
-                Category = lead.JobCategory,
+                Category = Enum.GetName(typeof(JobCategory), lead.JobCategory),
                 ContactEmail = lead.Contact.Email,
                 ContactFirstName = lead.Contact.Name.FirstName,
                 ContactFullName = lead.Contact.Name,

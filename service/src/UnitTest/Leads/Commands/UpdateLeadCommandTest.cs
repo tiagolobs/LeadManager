@@ -53,7 +53,7 @@ namespace UnitTest.Leads.Commands
         {
             // Arrange
             var leadEntity = GetLead();
-            leadEntity.Price = 501M;
+            leadEntity.Price = 601.54M;
 
             var command = new UpdateLeadCommand(1, new UpdateLeadRequest()
             {
@@ -67,7 +67,7 @@ namespace UnitTest.Leads.Commands
 
             //Assert
             Assert.Equal(LeadStatus.Accepted, response.LeadStatus);
-            Assert.Equal(450.9M, response.Price);
+            Assert.Equal(541.39M, response.Price);
 
             _unitOfWorkMock.Verify(x => x.SaveAsync());
             _emailServiceMock.Verify(x => x.Send("vendas@test.com", "Lead Accepted", $"Hello Bill! Your lead has just been accepted "));

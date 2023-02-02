@@ -39,7 +39,7 @@ namespace Domain.Leads
             {
                 if (Price > PriceLimit)
                 {
-                    Price = Price * PriceLimitDiscount;
+                    Price = Math.Round(Price * PriceLimitDiscount, 2);
                 }
                 LeadStatus = LeadStatus.Accepted;
                 var eventArg = new LeadAcceptedEventArgs(this);

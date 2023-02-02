@@ -5,7 +5,7 @@ namespace Domain.ValueObjects
 {
     public class Email : ValueObject
     {
-        private readonly string _emailAddress;
+        public string EmailAddress { get; set; }
 
         public Email(string emailAddress)
         {
@@ -14,7 +14,7 @@ namespace Domain.ValueObjects
                 throw new ArgumentException("Email inválido");
             }
 
-            _emailAddress = emailAddress;
+            EmailAddress = emailAddress;
         }
 
         public static bool IsValid(string email)
@@ -26,11 +26,11 @@ namespace Domain.ValueObjects
         protected Email()
         { }
 
-        public static implicit operator string(Email email) => email._emailAddress;
+        public static implicit operator string(Email email) => email.EmailAddress;
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return _emailAddress;
+            yield return EmailAddress;
         }
     }
 }

@@ -32,7 +32,12 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 
 var app = builder.Build();
 AddCustomerData(app);
-
+app.UseCors(options =>
+{
+    options.WithOrigins("http://localhost:3000");
+    options.AllowAnyHeader();
+    options.AllowAnyMethod();
+});
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -40,8 +45,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 
